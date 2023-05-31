@@ -1,0 +1,17 @@
+yum update
+yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+cd s3fs-fuse
+./autogen.sh
+./configure — prefix=/usr — with-openssl
+./configure —prefix=/usr —with-openssl
+./configure -prefix=/usr -with-openssl
+make
+make install
+which s3fs
+mkdir -p /var/s3fs-demofs
+s3fs (bk) -o use_cache=/tmp -o allow_other -o multireq_max=5 /var/s3fs-demofs
+df -h
+cd /var/s3fs-demofs
+touch test
+ls
